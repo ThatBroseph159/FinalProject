@@ -24,16 +24,18 @@ Team member 2 "Joseph Sheets" | "50%"
 
 int main(){
     int NUM_WORDS;
-    //int MinimumWordPlay;
+    int MinimumWordPlay;
+	int strLength[50];
     char startUpButton;
 	char guessWord[25];
+	char* strWordList[50];
     bool validStartUp = false;
     bool writeMode = false;
     bool playMode = false;;
     FILE* wordsList = NULL;
-	int theTimer;
-	int theTime;
-	int i, j;
+	//int theTimer;
+	//int theTime;
+	int i;
 	
     wordsList = fopen("wordsList.txt", "r");
 	if(wordsList == NULL){
@@ -48,10 +50,13 @@ int main(){
 		appendFunc();
 		wordsList = fopen("wordsList.txt", "r");
 		getNumberOfWords(&NUM_WORDS, wordsList);
+		fclose(wordsList);
 		startUpPromot(NUM_WORDS);
 		startUpFunction(validStartUp, startUpButton, &playMode, &writeMode);
 	}
-	
+	getMinimumWords(&MinimumWordPlay);
+	fileScan(strWordList, strLength);
+
 	initscr();
 	drawGameBorder();
     while(playMode){
