@@ -132,3 +132,20 @@ int fileScan(char* strWordList[], int strLength[]){
 	}
 	return i;
 } 
+
+void addWord(char* WL[], int numwords, int* x, int* y){
+	int randx;
+	int rand = rand() % numwords;
+	int loop = 1;
+	while(loop){
+		randx = (rand() % 127) + 3;
+		
+		if(randx + strlen(WL[rand] < 130){
+			loop = 0;
+		}
+	}
+	mvprintw(randx, 3, "%s", WL[rand]);
+	
+	*x = randx;
+	*y = 3;
+}
