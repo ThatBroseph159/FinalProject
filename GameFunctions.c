@@ -110,3 +110,20 @@ void drawGameBorder(void){ //Coded By Joseph Sheets
 	mvprintw(42,5, "Type Here: ");	
 	
 }
+
+//declare string point for string array and int array for strlen of the strings
+int fileScan(char* wordlist[], int strLength[]){
+	FILE* fp;
+	char tempString[30];
+	int i;
+	fp = fopen("wordslist.txt", "r");
+	
+	while(!feof(fp)){
+		fscanf(fp, "%s", tempString);
+		wordlist[i] = (char*) malloc(sizeof(tempString) + 1);
+		strcpy(wordlist[i], tempString);
+		strLength[i] = strlen(wordlist[i]);
+		++i;
+	}
+	return i;
+} 
