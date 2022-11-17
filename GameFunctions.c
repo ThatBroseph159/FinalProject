@@ -16,6 +16,11 @@ void getNumberOfWords(int* NUM_WORDS, FILE* wordsList){ //Coded By Joseph Sheets
 	fclose(wordsList);
 }
 
+void getMinimumWords(int* MinimumWordPlay){
+	printf("\nPlease enter the minimum word count: ");
+	scanf("%d", MinimumWordPlay);
+}
+
 void startUpFunction(bool validStartUp, char startUpButton, bool* playMode, bool* writeMode){ //Coded By Joseph Sheets
 	while(!validStartUp){
 		scanf(" %c", &startUpButton);
