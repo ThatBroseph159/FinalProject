@@ -26,6 +26,8 @@ int main(){
     int NUM_WORDS;
     int MinimumWordPlay;
 	int strLength[50];
+	int xPosition;
+	int yPosition;
     char startUpButton;
 	char guessWord[25];
 	char* strWordList[50];
@@ -54,19 +56,27 @@ int main(){
 		startUpPromot(NUM_WORDS);
 		startUpFunction(validStartUp, startUpButton, &playMode, &writeMode);
 	}
+
+    if(NUM_WORDS == 0){
+        playMode = false;
+        printf("You need atleast 1 words to play!\n");
+        return 0;
+    }
 	getMinimumWords(&MinimumWordPlay);
 	fileScan(strWordList, strLength);
-
+	
 	initscr();
 	drawGameBorder();
+	addWord(strWordList, NUM_WORDS, &xPosition, &yPosition);
+
     while(playMode){
-		
 		refresh();
+        mvprintw(42,16, "");
 		scanw("%s", guessWord);
 		for(i = 0 ; i < 100; i++){
-			mvprintw(42,16+i, " ");		
+			mvprintw(42,16+i, " ");
 		}
-		mvprintw(42,16, "");		
+
 	}
 
 	endwin();
