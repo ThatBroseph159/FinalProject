@@ -135,7 +135,7 @@ int fileScan(char* strWordList[], int strLength[]){
 
 void addWord(char* WL[], int numwords, int* x, int* y, int minWord){
 	int randx;
-	int randWord; = rand() % numwords;
+	int randWord = rand() % numwords;
 	int loop = 1;
 	int loop1 = 1;
 	
