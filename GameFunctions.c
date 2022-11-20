@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <ncurses/ncurses.h>
 #include <string.h>
+#include <time.h>
 
 void getNumberOfWords(int* NUM_WORDS, FILE* wordsList){ //Coded By Joseph Sheets
     *NUM_WORDS = -1;
@@ -71,6 +72,7 @@ void appendFunc(){ //Coded By Sam Carroll
 		else{
 			printf("Invalid input. Try again.\n");
 		}
+	
 	}
 	
 	while(wordInsert){
@@ -116,13 +118,11 @@ void drawGameBorder(void){ //Coded By Joseph Sheets
 	
 }
 
-//declare string point for string array and int array for strlen of the strings
-int fileScan(char* strWordList[], int strLength[]){
+void fileScan(char* strWordList[], int strLength[]){
 	FILE* fp;
 	char tempString[30];
-	int i;
 	fp = fopen("wordslist.txt", "r");
-	
+	int i = 0;
 	while(!feof(fp)){
 		fscanf(fp, "%s", tempString);
 		strWordList[i] = (char*) malloc(sizeof(tempString) + 1);
@@ -130,32 +130,31 @@ int fileScan(char* strWordList[], int strLength[]){
 		strLength[i] = strlen(strWordList[i]);
 		++i;
 	}
-	return i;
-} 
+}
 
-void addWord(char* WL[], int numwords, int* x, int* y, int minWord){
-	int randx;
-	int randWord = rand() % numwords;
-	int loop = 1;
-	int loop1 = 1;
-	
-	while(loop1){
-		randWord = rand() % numwords;
-		
-		if(strlen(WL[randWord] > minWord){
-			loop1 = 0;
-		}
-	}
-	
-	while(loop){
-		randx = (rand() % 127) + 3;
-		
-		if(randx + strlen(WL[randWord]) < 130){
-			loop = 0;
-		}
-	}
-	mvprintw(randx, 4, "%s", WL[randWord]);
-	
-	*x = randx;
-	*y = 3;
+void addWord(char* WL[], int NUM_WORDS, int* x, int* y, int minWord){
+    int randx;
+    int randWord = rand() % NUM_WORDS;
+    int loop = 1;
+    int loop1 = 1;
+
+    while(loop1){
+        randWord = rand() % NUM_WORDS;
+
+        if(strlen(WL[randWord]) > minWord){
+            loop1 = 0;
+        }
+    }
+
+    while(loop){
+        randx = (rand() % 127) + 3;
+
+        if(randx + strlen(WL[randWord]) < 130){
+            loop = 0;
+        }
+    }
+    mvprintw(randx, 4, "%s", WL[randWord]);
+
+    *x = randx;
+    *y = 3;
 }
