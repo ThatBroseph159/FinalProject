@@ -41,7 +41,7 @@ void startUpFunction(bool validStartUp, char startUpButton, bool* playMode, bool
     }
 }
 
-void startUpPromot(int NUM_WORDS){ //Coded By Joseph Sheets
+void startUpPrompt(int NUM_WORDS){ //Coded By Joseph Sheets
 	printf("\nHello! This is a very fun typing game! You will need to type the words as they appear.\n");
 	printf("Would you like to play or add a word?\n");
 	printf("You currently have %d words that be used. (P/W) ", NUM_WORDS);
@@ -132,29 +132,20 @@ void fileScan(char* strWordList[], int strLength[]){
 	}
 }
 
-void addWord(char* WL[], int NUM_WORDS, int* x, int* y, int minWord){
-    int randx;
-    int randWord = rand() % NUM_WORDS;
-    int loop = 1;
-    int loop1 = 1;
+void addWord(char* WL[], int NUM_WORDS, int* x, int* y){
+	srand((int)time(NULL));
+	int randx;
+	int randWord = rand() % NUM_WORDS;
+	int loop = 1;
+	while(loop){
+		randx = (rand() % 127) + 4;
 
-    while(loop1){
-        randWord = rand() % NUM_WORDS;
+		if(randx + strlen(WL[randWord]) < 130){
+			loop = 0;
+		}
+	}
+	mvprintw(3, randx, "%s", WL[randWord]);
 
-        if(strlen(WL[randWord]) > minWord){
-            loop1 = 0;
-        }
-    }
-
-    while(loop){
-        randx = (rand() % 127) + 3;
-
-        if(randx + strlen(WL[randWord]) < 130){
-            loop = 0;
-        }
-    }
-    mvprintw(randx, 4, "%s", WL[randWord]);
-
-    *x = randx;
-    *y = 3;
+	*x = randx;
+	*y = 3;
 }
