@@ -3,8 +3,7 @@ Team ##
 Team member 1 "Sam Carroll" | "50%"
 Team member 2 "Joseph Sheets" | "50%"
 
-// Coded By Joseph Sheets
-// Last Coded On 11/15/22
+ // Last Coded On 11/15/22
 
 */
 
@@ -18,6 +17,11 @@ Team member 2 "Joseph Sheets" | "50%"
 
 //Struct Definitions
 
+typedef struct word_struct{
+    char word[20];
+    int xPos;
+    int yPos;
+} gameWord;
 //Functions Declarations
 
 //Code
@@ -64,8 +68,9 @@ int main(){
     }
 	getMinimumWords(&MinimumWordPlay);
 	fileScan(strWordList, strLength);
-	
-	initscr();
+    gameWord gameWords[NUM_WORDS];
+
+    initscr();
 	drawGameBorder();
 	addWord(strWordList, NUM_WORDS, &xPosition, &yPosition);
 
