@@ -72,7 +72,7 @@ int main(){
 
     initscr();
 	drawGameBorder();
-	addWord(strWordList, NUM_WORDS, &xPosition, &yPosition);
+	addWord(strWordList, NUM_WORDS, &xPosition, &yPosition, MinimumWordPlay);
 
     while(playMode){
 		refresh();
