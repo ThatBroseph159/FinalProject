@@ -5,3 +5,4 @@ void fileScan(char* strWordList[], int strLength[]);
 void startUpPromot(int NUM_WORDS);
 void appendFunc(void);
 void drawGameBorder(void);
+void addWord(char* WL[], int NUM_WORDS, int* x, int* y);
