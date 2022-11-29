@@ -3,7 +3,7 @@ Team ##
 Team member 1 "Sam Carroll" | "50%"
 Team member 2 "Joseph Sheets" | "50%"
 
- // Last Coded On 11/15/22
+ // Last Coded On 11/29/22
 
 */
 
@@ -32,24 +32,31 @@ int main(){
 	int strLength[50];
 	int xPosition;
 	int yPosition;
-    char startUpButton;
+    char startUpButton = '\0';
 	char guessWord[25];
 	char* strWordList[50];
     bool validStartUp = false;
     bool writeMode = false;
-    bool playMode = false;;
+    bool playMode = false;
     FILE* wordsList = NULL;
-	//int theTimer;
-	//int theTime;
+    int gameSpeed = 5000;
 	int i;
-	
+
+    clock_t before = clock();
+
+    /*while(before + gameSpeed > clock()){
+       if(gameSpeed > 500){
+           gameSpeed = gameSpeed - 100;
+       }
+    }*/
+
     wordsList = fopen("wordsList.txt", "r");
 	if(wordsList == NULL){
 		return 0; // Error Opening File
 	}
 	
 	getNumberOfWords(&NUM_WORDS, wordsList);
-	startUpPromot(NUM_WORDS);
+	startUpPrompt(NUM_WORDS);
 	startUpFunction(validStartUp, startUpButton, &playMode, &writeMode);
 	
 	while(writeMode){
@@ -57,7 +64,7 @@ int main(){
 		wordsList = fopen("wordsList.txt", "r");
 		getNumberOfWords(&NUM_WORDS, wordsList);
 		fclose(wordsList);
-		startUpPromot(NUM_WORDS);
+		startUpPrompt(NUM_WORDS);
 		startUpFunction(validStartUp, startUpButton, &playMode, &writeMode);
 	}
 
@@ -66,7 +73,7 @@ int main(){
         printf("You need atleast 1 words to play!\n");
         return 0;
     }
-	getMinimumWords(&MinimumWordPlay);
+    getMinimumWords(&MinimumWordPlay);
 	fileScan(strWordList, strLength);
     gameWord gameWords[NUM_WORDS];
 
