@@ -132,19 +132,20 @@ void fileScan(char* strWordList[], int strLength[]){
 	}
 }
 
-void addWord(char* WL[], int NUM_WORDS, int* x, int* y){
-	srand((int)time(NULL));
+void addWord(char* WL[], int NUM_WORDS, int* x, int* y, int MinimumWordPlay){
+    srand((int)time(NULL));
 	int randx;
-	int randWord = rand() % NUM_WORDS;
+	int randWordIndex = rand() % NUM_WORDS;
 	int loop = 1;
 	while(loop){
 		randx = (rand() % 127) + 4;
 
-		if(randx + strlen(WL[randWord]) < 130){
-			loop = 0;
-		}
+        if(strlen(WL[randWordIndex]) > MinimumWordPlay && randx + strlen(WL[randWordIndex]) < 130){
+            loop = 0;
+        }
+
 	}
-	mvprintw(3, randx, "%s", WL[randWord]);
+	mvprintw(3, randx, "%s", WL[randWordIndex]);
 
 	*x = randx;
 	*y = 3;
