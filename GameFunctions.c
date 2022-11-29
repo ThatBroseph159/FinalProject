@@ -130,3 +130,21 @@ void fileScan(char* strWordList[], int strLength[]){
 		++i;
 	}
 }
+
+void moveWords(wordInfoList gameWords[], int wordArray, int spaces){ //Coded by Sam Carroll
+	
+	int temp;
+	int i;
+	
+	temp = gameWords[wordArray].yPos;
+	gameWords[wordArray].yPos += spaces;
+	mvprintw(gameWords[wordArray].yPos, gameWords[wordArray].xPos, "%s", gameWords[wordArray].word);
+	
+	if(temp != 5){
+		for(i = 0; i < strlen(gameWords[wodArray].name); ++i)
+		{
+		mvprintw(temp, gameWords[wordArray].xPos + i, "%s", " ");
+		}
+	}
+	
+}
