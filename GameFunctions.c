@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
@@ -90,7 +89,7 @@ void appendFunc(){ //Coded By Sam Carroll
 	}
 	
 	if(wordClear == 1){
-		fprintf(fp, "");
+		fprintf(fp, " ");
 	}
 	fclose(fp);
 	
@@ -130,23 +129,4 @@ void fileScan(char* strWordList[], int strLength[]){
 		strLength[i] = strlen(strWordList[i]);
 		++i;
 	}
-}
-
-void addWord(char* WL[], int NUM_WORDS, int* x, int* y, int MinimumWordPlay){
-    srand((int)time(NULL));
-	int randx;
-	int randWordIndex = rand() % NUM_WORDS;
-	int loop = 1;
-	while(loop){
-		randx = (rand() % 127) + 4;
-
-        if(strlen(WL[randWordIndex]) > MinimumWordPlay && randx + strlen(WL[randWordIndex]) < 130){
-            loop = 0;
-        }
-
-	}
-	mvprintw(3, randx, "%s", WL[randWordIndex]);
-
-	*x = randx;
-	*y = 3;
 }
